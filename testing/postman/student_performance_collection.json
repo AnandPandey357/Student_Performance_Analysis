@@ -1,0 +1,495 @@
+{
+  "info": {
+    "name": "Student Performance API Collection",
+    "description": "Postman collection for testing Student Performance Analysis API endpoints",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_postman_id": "student-performance-api-collection",
+    "version": {
+      "major": 1,
+      "minor": 0,
+      "patch": 0
+    }
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:5000",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "API Home",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/",
+          "host": ["{{base_url}}"],
+          "path": [""]
+        },
+        "description": "Get API information and available endpoints"
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Response has message field\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData).to.have.property('message');",
+              "});",
+              "",
+              "pm.test(\"Response has endpoints field\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData).to.have.property('endpoints');",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Get All Students",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/students",
+          "host": ["{{base_url}}"],
+          "path": ["students"]
+        },
+        "description": "Get all student records"
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Response has data array\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData).to.have.property('data');",
+              "    pm.expect(jsonData.data).to.be.an('array');",
+              "});",
+              "",
+              "pm.test(\"Response has total count\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData).to.have.property('total');",
+              "    pm.expect(jsonData.total).to.be.a('number');",
+              "});",
+              "",
+              "pm.test(\"Student data has required fields\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    if (jsonData.data.length > 0) {",
+              "        pm.expect(jsonData.data[0]).to.have.property('StudentID');",
+              "        pm.expect(jsonData.data[0]).to.have.property('Gender');",
+              "        pm.expect(jsonData.data[0]).to.have.property('MathScore');",
+              "        pm.expect(jsonData.data[0]).to.have.property('AverageScore');",
+              "    }",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Get Student by ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/students/STU001",
+          "host": ["{{base_url}}"],
+          "path": ["students", "STU001"]
+        },
+        "description": "Get a specific student by ID"
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Response has StudentID\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData).to.have.property('StudentID');",
+              "    pm.expect(jsonData.StudentID).to.eql('STU001');",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Get Student by Invalid ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/students/INVALID999",
+          "host": ["{{base_url}}"],
+          "path": ["students", "INVALID999"]
+        },
+        "description": "Test edge case: Get student with invalid ID"
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 404\", function () {",
+              "    pm.response.to.have.status(404);",
+              "});",
+              "",
+              "pm.test(\"Response has error message\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData).to.have.property('error');",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Filter by Gender",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/students?gender=Male",
+          "host": ["{{base_url}}"],
+          "path": ["students"],
+          "query": [
+            {
+              "key": "gender",
+              "value": "Male"
+            }
+          ]
+        },
+        "description": "Get students filtered by gender"
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"All students are Male\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    jsonData.data.forEach(function(student) {",
+              "        pm.expect(student.Gender).to.eql('Male');",
+              "    });",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Filter by Test Preparation",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/students?test_preparation=Completed",
+          "host": ["{{base_url}}"],
+          "path": ["students"],
+          "query": [
+            {
+              "key": "test_preparation",
+              "value": "Completed"
+            }
+          ]
+        },
+        "description": "Get students filtered by test preparation"
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"All students completed test preparation\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    jsonData.data.forEach(function(student) {",
+              "        pm.expect(student.TestPreparationCourse).to.eql('Completed');",
+              "    });",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Get Performance Summary",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/performance-summary",
+          "host": ["{{base_url}}"],
+          "path": ["performance-summary"]
+        },
+        "description": "Get comprehensive performance summary"
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Response has overall stats\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData).to.have.property('overall');",
+              "    pm.expect(jsonData.overall).to.have.property('pass_rate');",
+              "});",
+              "",
+              "pm.test(\"Response has gender stats\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData).to.have.property('by_gender');",
+              "});",
+              "",
+              "pm.test(\"Response has test preparation stats\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData).to.have.property('by_test_preparation');",
+              "});",
+              "",
+              "pm.test(\"Pass rate is between 0 and 100\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData.overall.pass_rate).to.be.at.least(0);",
+              "    pm.expect(jsonData.overall.pass_rate).to.be.at.most(100);",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Get Subject Statistics",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/subject-stats",
+          "host": ["{{base_url}}"],
+          "path": ["subject-stats"]
+        },
+        "description": "Get statistics by subject"
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Response has subject stats\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData).to.have.property('MathScore');",
+              "    pm.expect(jsonData).to.have.property('ReadingScore');",
+              "    pm.expect(jsonData).to.have.property('WritingScore');",
+              "});",
+              "",
+              "pm.test(\"Each subject has required stats\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    ['MathScore', 'ReadingScore', 'WritingScore'].forEach(function(subject) {",
+              "        pm.expect(jsonData[subject]).to.have.property('mean');",
+              "        pm.expect(jsonData[subject]).to.have.property('std');",
+              "        pm.expect(jsonData[subject]).to.have.property('min');",
+              "        pm.expect(jsonData[subject]).to.have.property('max');",
+              "    });",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Get Education Statistics",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/education-stats",
+          "host": ["{{base_url}}"],
+          "path": ["education-stats"]
+        },
+        "description": "Get statistics by parental education level"
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Response contains education data\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(Object.keys(jsonData).length).to.be.above(0);",
+              "});",
+              "",
+              "pm.test(\"Each education level has required fields\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    Object.keys(jsonData).forEach(function(edu) {",
+              "        pm.expect(jsonData[edu]).to.have.property('count');",
+              "        pm.expect(jsonData[edu]).to.have.property('average_overall');",
+              "        pm.expect(jsonData[edu]).to.have.property('pass_rate');",
+              "    });",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Invalid Endpoint Test",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/invalid-endpoint",
+          "host": ["{{base_url}}"],
+          "path": ["invalid-endpoint"]
+        },
+        "description": "Test edge case: Invalid endpoint"
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 404\", function () {",
+              "    pm.response.to.have.status(404);",
+              "});",
+              "",
+              "pm.test(\"Response has error message\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData).to.have.property('error');",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Negative Test - Invalid Gender Filter",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/students?gender=InvalidGender",
+          "host": ["{{base_url}}"],
+          "path": ["students"],
+          "query": [
+            {
+              "key": "gender",
+              "value": "InvalidGender"
+            }
+          ]
+        },
+        "description": "Negative test: Invalid gender filter value"
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200 (returns empty array)\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Returns empty data for invalid filter\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData.total).to.eql(0);",
+              "    pm.expect(jsonData.data).to.be.an('array').that.is.empty;",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Negative Test - Missing Fields Validation",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/students",
+          "host": ["{{base_url}}"],
+          "path": ["students"]
+        },
+        "description": "Validate response schema and required fields"
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Response contains all required fields\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    if (jsonData.data.length > 0) {",
+              "        var requiredFields = ['StudentID', 'Gender', 'ParentalEducation', 'MathScore', 'ReadingScore', 'WritingScore', 'AverageScore'];",
+              "        requiredFields.forEach(function(field) {",
+              "            pm.expect(jsonData.data[0]).to.have.property(field);",
+              "        });",
+              "    }",
+              "});"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

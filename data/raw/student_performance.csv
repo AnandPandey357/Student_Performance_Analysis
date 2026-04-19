@@ -1,0 +1,21 @@
+StudentID,Gender,ParentalEducation,LunchType,TestPreparationCourse,MathScore,ReadingScore,WritingScore
+STU001,Male,Bachelor's Degree,Standard,Completed,72,85,78
+STU002,Female,Master's Degree,Standard,Completed,85,92,88
+STU003,Male,Some College,Free/Reduced,None,65,70,68
+STU004,Female,Associate's Degree,Standard,Completed,78,80,82
+STU005,Male,High School,Free/Reduced,None,58,62,60
+STU006,Female,Bachelor's Degree,Standard,None,82,88,85
+STU007,Male,Master's Degree,Standard,Completed,90,95,92
+STU008,Female,Some College,Free/Reduced,Completed,75,78,76
+STU009,Male,High School,Standard,None,62,68,65
+STU010,Female,Associate's Degree,Standard,Completed,88,90,87
+STU011,Male,Bachelor's Degree,Free/Reduced,Completed,70,75,72
+STU012,Female,Master's Degree,Standard,None,92,96,94
+STU013,Male,Some College,Standard,Completed,68,72,70
+STU014,Female,High School,Free/Reduced,None,55,60,58
+STU015,Male,Associate's Degree,Standard,Completed,80,85,82
+STU016,Female,Bachelor's Degree,Free/Reduced,None,77,82,79
+STU017,Male,Master's Degree,Standard,Completed,95,98,96
+STU018,Female,Some College,Standard,None,72,76,74
+STU019,Male,High School,Free/Reduced,Completed,60,65,63
+STU020,Female,Associate's Degree,Standard,None,85,89,86

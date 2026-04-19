@@ -1,0 +1,22 @@
+{
+  "original_records": 20,
+  "processed_records": 20,
+  "columns_before": 8,
+  "columns_after": 19,
+  "duplicates_removed": 0,
+  "categorical_encoded": [
+    "Gender",
+    "ParentalEducation",
+    "LunchType",
+    "TestPreparationCourse"
+  ],
+  "scores_normalized": true,
+  "derived_features": [
+    "TotalScore",
+    "AverageScore",
+    "PassStatus",
+    "PerformanceLevel"
+  ],
+  "anomalies_detected": 1,
+  "validation_passed": false
+}

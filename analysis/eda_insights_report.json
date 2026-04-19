@@ -1,0 +1,142 @@
+{
+  "analysis_date": "2026-04-19 20:25:12",
+  "total_students_analyzed": 20,
+  "key_insights": [
+    {
+      "factor": "Parental Education",
+      "metric": "Average Overall Score",
+      "scores_by_education": {
+        "Master's Degree": {
+          "MathScore": 90.5,
+          "ReadingScore": 95.25,
+          "WritingScore": 92.5,
+          "AverageScore": 92.75
+        },
+        "Associate's Degree": {
+          "MathScore": 82.75,
+          "ReadingScore": 86.0,
+          "WritingScore": 84.25,
+          "AverageScore": 84.33
+        },
+        "Bachelor's Degree": {
+          "MathScore": 75.25,
+          "ReadingScore": 82.5,
+          "WritingScore": 78.5,
+          "AverageScore": 78.75
+        },
+        "Some College": {
+          "MathScore": 70.0,
+          "ReadingScore": 74.0,
+          "WritingScore": 72.0,
+          "AverageScore": 72.0
+        },
+        "High School": {
+          "MathScore": 58.75,
+          "ReadingScore": 63.75,
+          "WritingScore": 61.5,
+          "AverageScore": 61.33
+        }
+      },
+      "highest_performing": "Master's Degree",
+      "lowest_performing": "High School",
+      "business_insight": "Students whose parents have higher education levels (Master's Degree, Bachelor's Degree) consistently perform better across all subjects. The highest performing group is Master's Degree with an average score of 92.75, while the lowest is High School with 61.33. This suggests that parental education significantly influences student academic performance. Recommendation: Provide additional support programs for students from lower parental education backgrounds."
+    },
+    {
+      "factor": "Gender",
+      "metric": "Subject-wise Performance",
+      "scores_by_gender": {
+        "Female": {
+          "MathScore": 78.9,
+          "ReadingScore": 83.1,
+          "WritingScore": 80.9,
+          "AverageScore": 80.97
+        },
+        "Male": {
+          "MathScore": 72.0,
+          "ReadingScore": 77.5,
+          "WritingScore": 74.6,
+          "AverageScore": 74.7
+        }
+      },
+      "business_insight": "Gender analysis reveals distinct performance patterns across subjects. Male students show 72.0 average in Math, while Female students excel in Reading (83.1) and Writing (80.9). This pattern suggests inherent strengths that can be leveraged for targeted learning strategies. Recommendation: Develop subject-specific support programs that acknowledge and build upon these gender-based strengths."
+    },
+    {
+      "factor": "Test Preparation Course",
+      "metric": "Score Improvement",
+      "scores_by_course": {
+        "Completed": {
+          "MathScore": 75.45,
+          "ReadingScore": 80.3,
+          "WritingScore": 77.75,
+          "AverageScore": 77.83
+        }
+      },
+      "improvement": {},
+      "business_insight": "Students who completed the test preparation course show significant improvement across all subjects. The average score improvement is 0 points. Specifically, Math improved by 0 points, Reading by 0 points, and Writing by 0 points. This demonstrates the effectiveness of structured preparation programs. Recommendation: Make test preparation courses mandatory or strongly encouraged for all students."
+    },
+    {
+      "factor": "Subject Comparison",
+      "metric": "Subject Performance",
+      "subject_statistics": {
+        "MathScore": {
+          "mean": 75.45,
+          "median": 76.0,
+          "std": 11.79,
+          "min": 55,
+          "max": 95
+        },
+        "ReadingScore": {
+          "mean": 80.3,
+          "median": 81.0,
+          "std": 11.58,
+          "min": 60,
+          "max": 98
+        },
+        "WritingScore": {
+          "mean": 77.75,
+          "median": 78.5,
+          "std": 11.33,
+          "min": 58,
+          "max": 96
+        }
+      },
+      "strongest_subject": "ReadingScore",
+      "weakest_subject": "MathScore",
+      "business_insight": "Subject analysis reveals ReadingScore as the strongest performing subject (mean: 80.3) and MathScore as the weakest (mean: 75.45). The standard deviation varies across subjects, with Math showing the highest variability. This indicates that students may need targeted support in the weaker subject. Recommendation: Implement subject-specific tutoring programs and focus additional resources on improving performance in the weakest subject."
+    },
+    {
+      "factor": "Lunch Type",
+      "metric": "Average Score",
+      "scores_by_lunch": {
+        "Free/Reduced": {
+          "MathScore": 65.71,
+          "ReadingScore": 70.29,
+          "WritingScore": 68.0,
+          "AverageScore": 68.0
+        },
+        "Standard": {
+          "MathScore": 80.69,
+          "ReadingScore": 85.69,
+          "WritingScore": 83.0,
+          "AverageScore": 83.13
+        }
+      },
+      "business_insight": "Students with Standard lunch type have an average score of 83.13, while those with Free/Reduced lunch have 68.0. This difference of 15.129999999999995 points suggests that socioeconomic factors (indicated by lunch type) correlate with academic performance. Recommendation: Provide additional academic support and resources to students receiving Free/Reduced lunch to bridge the performance gap."
+    }
+  ],
+  "recommendations": [
+    "Provide targeted support for students from lower parental education backgrounds",
+    "Develop subject-specific learning strategies based on gender performance patterns",
+    "Make test preparation courses mandatory or strongly encouraged",
+    "Implement subject-specific tutoring programs",
+    "Provide additional resources to students receiving Free/Reduced lunch",
+    "Focus on improving performance in the weakest subject area"
+  ],
+  "risk_factors": [
+    "Students without test preparation course",
+    "Students from lower parental education backgrounds",
+    "Students receiving Free/Reduced lunch",
+    "Gender-specific subject weaknesses",
+    "Low performers in specific subjects"
+  ]
+}

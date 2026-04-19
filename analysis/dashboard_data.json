@@ -1,0 +1,72 @@
+{
+  "kpi_metrics": {
+    "total_students": 20,
+    "average_math_score": 75.45,
+    "average_reading_score": 80.3,
+    "average_writing_score": 77.75,
+    "overall_average": 77.83,
+    "pass_rate": 95.0,
+    "top_performers_count": 3,
+    "top_performers_percentage": 15.0
+  },
+  "parental_education_scores": {
+    "Bachelor's Degree": {
+      "count": 4,
+      "avg_math": 75.25,
+      "avg_reading": 82.5,
+      "avg_writing": 78.5,
+      "avg_overall": 78.75
+    },
+    "Master's Degree": {
+      "count": 4,
+      "avg_math": 90.5,
+      "avg_reading": 95.25,
+      "avg_writing": 92.5,
+      "avg_overall": 92.75
+    },
+    "Some College": {
+      "count": 4,
+      "avg_math": 70.0,
+      "avg_reading": 74.0,
+      "avg_writing": 72.0,
+      "avg_overall": 72.0
+    },
+    "Associate's Degree": {
+      "count": 4,
+      "avg_math": 82.75,
+      "avg_reading": 86.0,
+      "avg_writing": 84.25,
+      "avg_overall": 84.33
+    },
+    "High School": {
+      "count": 4,
+      "avg_math": 58.75,
+      "avg_reading": 63.75,
+      "avg_writing": 61.5,
+      "avg_overall": 61.33
+    }
+  },
+  "gender_comparison": {
+    "Male": {
+      "count": 10,
+      "avg_math": 72.0,
+      "avg_reading": 77.5,
+      "avg_writing": 74.6
+    },
+    "Female": {
+      "count": 10,
+      "avg_math": 78.9,
+      "avg_reading": 83.1,
+      "avg_writing": 80.9
+    }
+  },
+  "test_preparation_impact": {
+    "Completed": {
+      "count": 20,
+      "avg_overall": 77.83,
+      "pass_rate": 95.0
+    }
+  },
+  "subject_comparison": {},
+  "lunch_type_impact": {}
+}

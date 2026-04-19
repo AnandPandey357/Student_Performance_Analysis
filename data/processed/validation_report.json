@@ -1,0 +1,16 @@
+{
+  "structure_valid": true,
+  "has_missing_values": true,
+  "missing_values": {
+    "TestPreparationCourse": 9
+  },
+  "duplicate_count": 0,
+  "duplicate_ids": [],
+  "score_range_valid": true,
+  "consistency_valid": false,
+  "inconsistencies": {
+    "TestPreparationCourse": [
+      NaN
+    ]
+  }
+}

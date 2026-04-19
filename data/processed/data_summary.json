@@ -1,0 +1,26 @@
+{
+  "total_records": 20,
+  "columns": [
+    "StudentID",
+    "Gender",
+    "ParentalEducation",
+    "LunchType",
+    "TestPreparationCourse",
+    "MathScore",
+    "ReadingScore",
+    "WritingScore",
+    "Gender_Encoded",
+    "ParentalEducation_Encoded",
+    "LunchType_Encoded",
+    "TestPreparationCourse_Encoded",
+    "MathScore_Normalized",
+    "ReadingScore_Normalized",
+    "WritingScore_Normalized",
+    "TotalScore",
+    "AverageScore",
+    "PassStatus",
+    "PerformanceLevel"
+  ],
+  "anomalies_detected": 1,
+  "data_accuracy_improvement": "5.0%"
+}

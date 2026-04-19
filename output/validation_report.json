@@ -1,0 +1,50 @@
+{
+  "validation_date": "2026-04-19 20:25:03",
+  "data_file": "../data/raw/student_performance.csv",
+  "total_records": 20,
+  "validation_results": {
+    "score_range_validation": {
+      "passed": true,
+      "violations": {}
+    },
+    "duplicate_detection": {
+      "exact_duplicate_count": 0,
+      "duplicate_student_ids": [],
+      "passed": true
+    },
+    "null_validation": {
+      "has_nulls": true,
+      "null_report": {
+        "TestPreparationCourse": {
+          "count": 9,
+          "percentage": 45.0
+        }
+      },
+      "passed": false
+    },
+    "consistency_validation": {
+      "inconsistencies": {
+        "invalid_course": 9
+      },
+      "passed": false
+    },
+    "edge_cases": {
+      "total_edge_cases": 0,
+      "edge_cases": [],
+      "passed": true
+    }
+  },
+  "quality_metrics": {
+    "completeness": 95.0,
+    "uniqueness": 100.0,
+    "validity": 100.0,
+    "consistency": 75.0,
+    "overall_quality_score": 92.5,
+    "total_records": 20,
+    "total_cells": 180,
+    "data_quality_grade": "A (Very Good)"
+  },
+  "edge_cases_detected": 0,
+  "edge_cases": [],
+  "overall_status": "FAIL"
+}
